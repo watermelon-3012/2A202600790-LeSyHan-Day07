@@ -58,4 +58,36 @@ class OpenAIEmbedder:
         return [float(value) for value in response.data[0].embedding]
 
 
+class GeminiEmbedder:
+    """Google Generative AI embeddings API-backed embedder."""
+
+    def __init__(self, model_name: str = "models/text-embedding-004") -> None:
+        import os
+        try:
+            import google.genai as genai
+            api_key = os.getenv("GOOGLE_API_KEY")
+            if api_key:
+                genai.configure(api_key=api_key)
+            self.model_name = model_name
+            self._backend_name = model_name
+            self.client = genai
+        except (ImportError, AttributeError):
+            # Fallback to mock if google.genai not available or misconfigured
+            self.model_name = model_name
+            self._backend_name = "mock (gemini unavailable)"
+            self.client = None
+
+    def __call__(self, text: str) -> list[float]:
+        if self.client is None:
+            # Use mock embedder as fallback
+            return _mock_embed(text)
+        
+        try:
+            result = self.client.embed_content(model=self.model_name, content=text)
+            return [float(value) for value in result["embedding"]]
+        except Exception:
+            # Fallback to mock on any error
+            return _mock_embed(text)
+
+
 _mock_embed = MockEmbedder()

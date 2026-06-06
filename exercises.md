@@ -117,13 +117,14 @@ class CustomChunker:
 
 Mỗi nhóm viết **đúng 5 benchmark queries** kèm **gold answers**.
 
-| # | Query | Gold Answer (câu trả lời đúng) | Chunk nào chứa thông tin? |
-|---|-------|-------------------------------|--------------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| # | Query                                                                                                                                                     | Gold Answer (câu trả lời đúng)                                                                                                                                                                                                                                                                      | Chunk nào chứa thông tin?                                                 |
+| - | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1 | COSMOS (graph neural network for spatial multi-omics integration) sử dụng những thành phần chính nào để tích hợp hai modality và tạo embedding cuối cùng? | COSMOS mã hóa từng modality bằng hai Graph Convolutional Networks (GCN), sau đó tích hợp các biểu diễn bằng Weighted Nearest Neighbor (WNN), sử dụng cơ chế contrastive learning dựa trên Deep Graph Infomax (DGI) cùng spatial regularization để tạo integrated embedding cho downstream analysis. | **paper1.md** → *Introduction to COSMOS*                                  |
+| 2 | Theo bài báo SMOPCA, hạn chế chính của SpatialGlue khi xử lý spatial multi-omics với nhiều modality là gì?                                                | SpatialGlue chỉ xử lý tối đa hai modality; phiên bản SpatialGlue_3M được mở rộng cho đúng ba modality nhưng vẫn không thể xử lý dữ liệu có từ bốn modality trở lên.                                                                                                                                 | **paper3.md** → *Background*                                              |
+| 3 | Trong nghiên cứu Spatial epigenome-transcriptome co-profiling of mammalian tissues, spatial ATAC-RNA-seq được áp dụng trên những loại mô nào?             | Spatial ATAC-RNA-seq được áp dụng trên phôi chuột E13 (mouse embryo), não chuột hậu sinh P21/22 (juvenile mouse brain), và hồi hải mã não người trưởng thành (adult human brain hippocampus).                                                                                                       | **paper4.md** → *Technology workflow and data quality*                    |
+| 4 | COSMOS (cell sorting platform) sử dụng kiến trúc deep learning nào để phân loại tế bào từ ảnh brightfield độ phân giải cao?                               | COSMOS sử dụng kiến trúc **InceptionV3** làm mô hình CNN để học embedding hình thái học và thực hiện phân loại tế bào theo thời gian thực.                                                                                                                                                          | **paper2.md** (hoặc **paper5.md**) → *Introduction*                       |
+| 5 | **(Metadata filtering)** Trong các bài báo được cung cấp, bài nào được xuất bản trực tuyến sớm nhất và vào ngày nào?                                      | Bài **“Spatial epigenome-transcriptome co-profiling of mammalian tissues”** là bài được xuất bản trực tuyến sớm nhất, vào ngày **15 March 2023**. Để trả lời chính xác cần lọc theo metadata ngày xuất bản của các tài liệu.                                                                        | **paper4.md** → phần metadata đầu bài (*Published online: 15 March 2023*) |
+
 
 **Yêu cầu:**
 - Queries phải đa dạng (không hỏi 5 câu giống nhau)
